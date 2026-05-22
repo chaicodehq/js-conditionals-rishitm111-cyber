@@ -20,7 +20,7 @@
  * Rules:
  *   - If billAmount is 0 or negative, return null
  *   - If serviceRating is not an integer from 1 to 5, return null
- *
+ *1````````
  * Example:
  *   calculateTip(50, 4)
  *   → { tipPercentage: 20, tipAmount: 10.00, totalAmount: 60.00 }
@@ -29,6 +29,22 @@
  * @param {number} serviceRating - Service rating from 1 to 5
  * @returns {{ tipPercentage: number, tipAmount: number, totalAmount: number } | null}
  */
-export function calculateTip(billAmount, serviceRating) {
-  // Your code here
-}
+export function calculateTip(billAmount,serviceRating){
+  if(billAmount<=0||serviceRating>5||serviceRating<1||!Number.isInteger(serviceRating)){
+    return null;
+  }
+  const tipercentage={
+    1 :5,
+    2 :10,
+    3 :15,
+    4 :20,
+    5 :25
+  };
+  return {
+    "tipPercentage":tipercentage[serviceRating],
+    "tipAmount":(tipercentage[serviceRating]*billAmount)/100,
+    "totalAmount":(tipercentage[serviceRating]*billAmount)/100+billAmount
+  }
+} 
+
+

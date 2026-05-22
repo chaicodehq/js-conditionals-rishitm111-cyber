@@ -27,4 +27,73 @@
  */
 export function checkPasswordStrength(password) {
   // Your code here
+  if(password==""||typeof password!="string"){
+    return "weak";
+  }
+  let criteria=0;
+  let hasspl=false;
+  let spl=['!','@','#','$','%','^','&','*','()','_','+','-','=','[]','{}','|',';',':',',','.','<>','?'];
+   for(let ch of spl){
+    if(password.includes(ch)){
+      hasspl=true;
+      break;
+    }
+   }
+
+   let hasLowercase = false;
+
+  for (let ch of password) {
+      if (ch >= 'a' && ch <= 'z') {
+          hasLowercase = true;
+          break;
+      }
+  }
+  let hasUppercase = false;
+
+  for (let ch of password) {
+      if (ch >= 'A' && ch <= 'Z') {
+          hasUppercase = true;
+          break;
+      }
+  }
+  let hasnum=false;
+  for(let ch of password){
+    if(ch>='0'&&ch<='9'){
+      hasnum=true;
+      break;
+    }
+  }
+  if(hasLowercase==true){
+    criteria++;
+  }
+  if(hasUppercase==true){
+    criteria++;
+  }
+  if(password.length>=8){
+    criteria++;
+  }
+  if(hasnum==true){
+    criteria++;
+  }
+  if(hasspl==true){
+    criteria++;
+  }
+
+  if(criteria==5){
+    return "very strong";
+  }
+  else if(criteria==4){
+    return "strong";
+  }
+  else if(criteria>=2&&criteria<=3){
+    return "medium";
+  }
+  else if(criteria>=0&&criteria<=1){
+    return "weak";
+  }
+
 }
+
+
+
+

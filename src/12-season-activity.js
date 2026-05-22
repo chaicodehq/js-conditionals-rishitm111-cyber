@@ -30,6 +30,83 @@
  * @param {number} temperature - Current temperature in Celsius
  * @returns {{ season: string, activity: string } | null}
  */
+/**
+ * Returns a season and suggested activity
+ * based on month and temperature.
+ *
+ * @param {number} month
+ * @param {number} temperature
+ * @returns {{ season: string, activity: string } | null}
+ */
+
+/**
+ * @param {number} month
+ * @param {number} temperature
+ * @returns {{ season: string, activity: string } | null}
+ */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+
+  const seasons = {
+    1: "Winter",
+    2: "Winter",
+    3: "Spring",
+    4: "Spring",
+    5: "Spring",
+    6: "Summer",
+    7: "Summer",
+    8: "Summer",
+    9: "Autumn",
+    10: "Autumn",
+    11: "Autumn",
+    12: "Winter"
+  };
+
+  // Invalid month
+  if (month < 1 || month > 12) {
+    return null;
+  }
+
+  const season = seasons[month];
+  let activity = "";
+
+  // Winter
+  if (season === "Winter") {
+    if (temperature < 0) {
+      activity = "skiing";
+    } else {
+      activity = "ice skating";
+    }
+  }
+
+  // Spring
+  else if (season === "Spring") {
+    if (temperature > 20) {
+      activity = "hiking";
+    } else {
+      activity = "museum visit";
+    }
+  }
+
+  // Summer
+  else if (season === "Summer") {
+    if (temperature > 35) {
+      activity = "swimming";
+    } else {
+      activity = "cycling";
+    }
+  }
+
+  // Autumn
+  else {
+    if (temperature > 15) {
+      activity = "nature walk";
+    } else {
+      activity = "reading at a cafe";
+    }
+  }
+
+  return {
+    season,
+    activity
+  };
 }

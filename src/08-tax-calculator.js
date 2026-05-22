@@ -25,6 +25,36 @@
  * @param {number} income - Annual income in dollars
  * @returns {number} Total tax amount owed
  */
+/**
+ * @param {number} income
+ * @returns {number}
+ */
 export function calculateTax(income) {
-  // Your code here
+
+  if (income <= 0) {
+    return 0;
+  }
+
+  // Bracket 1
+  if (income <= 10000) {
+    return 0;
+  }
+
+  // Bracket 2
+  else if (income <= 30000) {
+
+    return (income - 10000) * 0.10;
+  }
+
+  // Bracket 3
+  else if (income <= 70000) {
+
+    return 2000 + (income - 30000) * 0.20;
+  }
+
+  // Bracket 4
+  else {
+
+    return 2000 + 8000 + (income - 70000) * 0.30;
+  }
 }
